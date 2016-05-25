@@ -1,0 +1,81 @@
+$font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif !default;
+$font-size: 16px;
+
+$grid-breakpoints: (
+    xs: 0,
+    sm: 544px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px
+);
+
+$spacer: 20px;
+
+@import 'import/breakpoints';
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: $font-family;
+    font-size: $font-size;
+    line-height: $spacer;
+    padding: $spacer;
+
+    @include media-breakpoint-between(xs, sm) {
+        width: 100%;
+    };
+
+    @include media-breakpoint-between(sm, md) {
+        width: 75%;
+    };
+
+    @include media-breakpoint-between(md, lg) {
+        width: 67%;
+    };
+
+    @include media-breakpoint-between(lg, xl) {
+        width: 50%;
+    };
+
+    @include media-breakpoint-up(xl) {
+        width: 33%;
+    };
+}
+
+a {
+    color: blue;
+    text-decoration: none;
+
+    &:hover {
+        background-color: yellow;
+        color: black;
+    }
+}
+
+h1 {
+    font-size: $font-size;
+    margin-bottom: $spacer;
+    position: relative;
+
+    &:before {
+        @include media-breakpoint-between(xs, sm) {
+            content: '📱 ';
+        };
+
+        @include media-breakpoint-between(sm, md) {
+            content: '📱➕ ';
+        };
+
+        @include media-breakpoint-between(md, xl) {
+            content: '💻 ';
+        };
+
+        @include media-breakpoint-up(xl) {
+            content: '🖥 ';
+        };
+    }
+}
