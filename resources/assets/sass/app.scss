@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik:300,500,700,900');
+
+$brown-lightest: #fffaef;
+$font-family-sans-serif: 'Rubik', sans-serif;
+$gray: #606060;
+$gray-dark: black;
+$link-hover-decoration: none;
+
+@import 'node_modules/bootstrap/scss/bootstrap';
+@import 'node_modules/font-awesome/scss/font-awesome';
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background-color: $brown-lightest;
+}
+
+
+
+.Arrow {
+    @extend .p-a-1;
+    @extend .text-xs-center;
+
+    animation: pulse 2048ms infinite alternate;
+    position: absolute;
+        bottom: 0;
+        left: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.Nav {
+    @extend .list-inline;
+    @extend .m-b-0;
+
+    @include media-breakpoint-down(sm) {
+        justify-content: center;
+    };
+
+    display: flex;
+
+    &__item {
+        @extend .list-inline-item;
+
+        &:not(:first-child) {
+            padding-left: $spacer;
+        }
+
+        &.\--social {
+            @include media-breakpoint-up(md) {
+                margin-left: auto;
+            };
+        }
+
+        &-icon {
+            //
+
+            &.\--copyright {
+                @extend .fa;
+                @extend .fa-copyright;
+            }
+
+            &.\--cv {
+                @extend .fa;
+                @extend .fa-file-text;
+            }
+
+            &.\--github {
+                @extend .fa;
+                @extend .fa-github;
+            }
+
+            &.\--linkedin {
+                @extend .fa;
+                @extend .fa-linkedin;
+            }
+
+            &.\--process-log {
+                @extend .fa;
+                @extend .fa-pencil;
+            }
+        }
+
+        &-span {
+            @extend .hidden-sm-down;
+        }
+    }
+
+    &__link {
+        color: $gray-dark;
+
+        &:hover {
+            color: $gray;
+        }
+    }
+
+    &__wrapper {
+        @extend .container-fluid;
+        @extend .p-a-1;
+
+        background-color: rgba($brown-lightest, .67);
+        width: 100%;
+
+        &.\--header {
+            -webkit-backdrop-filter: blur($spacer * .67);
+            position: fixed;
+                top: 0;
+            z-index: $zindex-navbar-sticky;
+        }
+    }
+}
+
+.Splash {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-size: 4.8vw;
+    height: 100%;
+    justify-content: center;
+    line-height: 1.125;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+.Work {
+    @extend .row;
+
+    &__list {
+        @extend .col-xs-12;
+        @extend .list-unstyled;
+        @extend .m-b-0;
+        @extend .p-y-3;
+
+        &-item {
+            &.\--heading {
+                font-size: $font-size-h1;
+                line-height: 1.125;
+            }
+
+            &.\--image {
+                @extend .p-b-1;
+                @extend .p-t-2;
+
+                img {
+                    @extend .img-fluid;
+                }
+            }
+
+            &.\--link {
+                @extend .m-b-1;
+
+                a {
+                    border-bottom: 1px solid;
+                    color: $gray-dark;
+                    font-size: $font-size-lg;
+                    font-weight: 300;
+                    padding-bottom: ($spacer / 4);
+
+                    &:hover {
+                        color: $gray;
+                    }
+                }
+            }
+
+            &.\--text {
+                font-size: $font-size-lg;
+                font-weight: 300;
+                max-width: 75%;
+
+                a {
+                    background-color: yellow;
+                    color: black;
+                    padding: 0 ($spacer / 4);
+
+                    &:hover {
+                        background-color: black;
+                    }
+                }
+            }
+        }
+    }
+
+    &__wrapper {
+        background-image: linear-gradient($brown-lightest, #ffbfdf, #80dfff, #80ffdf, $brown-lightest);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
