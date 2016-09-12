@@ -1,3 +1,3 @@
-## laugharn.github.io
+## Product Products
 
-It me.
+Product Products is Dan Laugharn, a full-stack web developer based in Austin.
