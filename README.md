@@ -1,3 +1,3 @@
-## Product Products
+## Laugharn
 
-Product Products is Dan Laugharn, a full-stack web developer based in Austin.
+Hi, I'm Dan Laugharn.

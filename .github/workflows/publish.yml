@@ -1,0 +1,43 @@
+concurrency:
+  cancel-in-progress: false
+  group: 'pages'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          cache: pnpm
+          node-version: ${{ matrix.node-version }}
+      - run: pnpm install
+      - uses: actions/configure-pages@v4
+        with:
+          static_site_generator: next
+      - run: pnpm run build
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./out
+  start:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
+name: publish
+on:
+  push:
+    branches: master
+permissions:
+  contents: read
+  id-token: write
+  pages: write
